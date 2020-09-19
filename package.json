@@ -1,7 +1,7 @@
 {
   "name": "cookbook",
   "version": "1.0.0",
-  "description": "",
+  "description": "Add, view and edit recipes on your desktop",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
