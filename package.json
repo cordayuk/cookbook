@@ -2,14 +2,24 @@
   "name": "cookbook",
   "version": "1.0.0",
   "description": "Add, view and edit recipes on your desktop",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "electron": "^10.1.2"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cordayuk/cookbook.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cordayuk/cookbook/issues"
+  },
+  "homepage": "https://github.com/cordayuk/cookbook#readme"
 }

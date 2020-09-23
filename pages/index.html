@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+</head>
+<body>
+<script>
+    console.log( document );
+    // <!-- import the module -->
+    const { ipcRenderer } = require('electron')
+
+    let tag1 = document.createElement("p");
+    let text1 = document.createTextNode( "Hello" );
+    tag1.appendChild(text1);
+    let element1 = document.getElementsByTagName("BODY")[0];
+    element1.appendChild( tag1 )
+
+    // <!-- here we request our message and the event listener we added before, will respond and because it's JSON file we need to parse it -->
+    require('electron').ipcRenderer.on('recipe-data', (event, data) => {
+        console.log( data )
+
+            let tag = document.createElement("p");
+            let text = document.createTextNode( data.ingredients );
+            tag.appendChild(text);
+            let element = document.getElementsByTagName("BODY")[0];
+            element.appendChild(tag);
+
+    })
+</script>
+
+<div id="new">
+
+</div>
+
+</body>
+</html>
