@@ -2,14 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Home Page</title>
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+    <title>Recipes</title>
+    <meta content="script-src 'self' 'unsafe-inline';" http-equiv="Content-Security-Policy"/>
+    <link href="./style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<div id="new">
+<header class="main-header">
+    <div class="container">
+        <h1 class="main-title">Cookbook</h1>
+    </div>
+</header>
 
+<div class="main-content" id="main-content">
+    <div class="menu-container" id="menu-container">
+        <div id="loader"></div>
+    </div>
 </div>
 
-<script src="renderer.js"></script>
+<script src="scripts/renderer.js"></script>
 </body>
 </html>
