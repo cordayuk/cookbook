@@ -1,8 +1,4 @@
-const Cookbook = require('../function/cookbook.js')
-
-const cookbook = new Cookbook();
-
-function createBrowseRecipe(recipe) {
+function createRecipeMenu(recipe) {
     // Creates div to hold recipe image and name. Sets up click event listener to handle loading recipe details.
     let div = document.createElement("div")
     div.className = 'recipe'
@@ -28,18 +24,6 @@ function createBrowseRecipe(recipe) {
     document.getElementById("menu-container").appendChild(div)
 }
 
-
-function removeSpinner() {
-    let spinner = document.getElementById("loader")
-    if (spinner !== undefined) {
-        spinner.parentNode.removeChild(spinner)
-    }
+module.exports = {
+    createRecipeMenu: createRecipeMenu
 }
-
-cookbook.loadRecipes().then(() => {
-    cookbook.recipes.forEach(recipe => {
-        createBrowseRecipe(recipe)
-    })
-    removeSpinner()
-})
-
