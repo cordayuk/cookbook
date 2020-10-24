@@ -1,20 +1,14 @@
 const Cookbook = require('../function/cookbook.js')
 const recipeMenu = require('./scripts/recipeMenu.js')
+const docUtils = require('./scripts/documentUtils.js')
 
 const cookbook = new Cookbook();
-
-
-function removeSpinner() {
-    let spinner = document.getElementById("loader")
-    if (spinner !== undefined) {
-        spinner.parentNode.removeChild(spinner)
-    }
-}
+const spinner = document.getElementById('loader')
 
 cookbook.loadRecipes().then(() => {
     cookbook.recipes.forEach(recipe => {
         recipeMenu.createRecipeMenu(recipe)
     })
-    removeSpinner()
+    docUtils.showHideElementById(spinner.id)
 })
 
