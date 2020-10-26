@@ -5,41 +5,73 @@ const contentContainer = document.getElementById('main-content')
  * @param recipe - the recipe to produce the recipe information pages for.
  */
 function viewRecipeInfo(recipe) {
-    let header = document.createElement("h2")
-    header.className = 'recipe-title'
-    header.textContent = recipe.name
-
-    let image = document.createElement('img')
-    image.src = recipe.imagePath
-
-    let recipeAdditionalInfo = document.createElement('div')
-    recipeAdditionalInfo.id = 'recipe-additional-info'
-
-    let servings = document.createElement('span')
-    servings.textContent = `Servings: ${recipe.servings}`
-
-    let cookingTime = document.createElement('span')
-    cookingTime.textContent = `Cooking Time: ${recipe.cookingTime}`
-
-    let ingredientsContainer = createIngredientsContainer(recipe)
-
-    let methodContainer = createMethodContainer(recipe)
 
     let recipeContainer = document.createElement('div')
     recipeContainer.className = 'recipe-info-container'
 
-    let upperContainer = document.createElement('div')
-    upperContainer.className = 'recipe-upper-container'
+    let upperContainer = createRecipeUpperContainer(recipe)
+    let lowerContainer = createRecipeLowerContainer(recipe)
+
+    recipeContainer.append(upperContainer, lowerContainer)
+
+    contentContainer.appendChild(recipeContainer)
+}
+
+/**
+ * Creates the lower container of the recipe information page.
+ * @param recipe - the recipe to populate the method and ingredients from.
+ * @returns {HTMLDivElement} - div element with classname recipe-lower-container
+ */
+function createRecipeLowerContainer(recipe) {
+    let ingredientsContainer = createIngredientsContainer(recipe)
+
+    let methodContainer = createMethodContainer(recipe)
 
     let lowerContainer = document.createElement('div')
     lowerContainer.className = 'recipe-lower-container'
 
-    upperContainer.append(image, servings, cookingTime)
     lowerContainer.append(ingredientsContainer, methodContainer)
 
-    recipeContainer.append(header, upperContainer, lowerContainer)
+    return lowerContainer
+}
 
-    contentContainer.appendChild(recipeContainer)
+/**
+ * Creates the upper container of the recipe information page.
+ * @param recipe - The recipe to create the upper container for.
+ * @returns {HTMLDivElement} - div element with classname of recipe-upper-container
+ */
+function createRecipeUpperContainer(recipe) {
+    let header = document.createElement("h2")
+    header.className = 'recipe-title'
+    header.textContent = recipe.name
+
+    let upperLeft = document.createElement('div')
+    upperLeft.className = 'recipe-upper-left'
+
+    let image = document.createElement('img')
+    image.className = 'recipe-image'
+    image.src = recipe.imagePath
+
+    let upperRight = document.createElement('div')
+    upperRight.className = 'recipe-upper-right'
+
+    let servings = document.createElement('span')
+    servings.className = 'servings'
+    servings.textContent = `Servings: ${recipe.servings}`
+
+    let cookingTime = document.createElement('span')
+    cookingTime.className = 'cooking-time'
+    cookingTime.textContent = `Cooking Time: ${recipe.cookingTime}`
+
+    upperLeft.append(image)
+    upperRight.append(header, cookingTime, servings)
+
+    let upperContainer = document.createElement('div')
+    upperContainer.className = 'recipe-upper-container'
+
+    upperContainer.append(upperLeft, upperRight)
+
+    return upperContainer
 }
 
 /**
