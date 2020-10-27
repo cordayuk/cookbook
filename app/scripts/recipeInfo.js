@@ -8,6 +8,7 @@ function viewRecipeInfo(recipe) {
 
     let recipeContainer = document.createElement('div')
     recipeContainer.className = 'recipe-info-container'
+    recipeContainer.id = 'recipe-info-container'
 
     let upperContainer = createRecipeUpperContainer(recipe)
     let lowerContainer = createRecipeLowerContainer(recipe)

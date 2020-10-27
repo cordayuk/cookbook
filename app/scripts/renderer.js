@@ -4,11 +4,12 @@ const docUtils = require('./scripts/documentUtils.js')
 
 const cookbook = new Cookbook();
 const spinner = document.getElementById('loader')
+const navBar = document.getElementById('nav-bar')
 
 cookbook.loadRecipes().then(() => {
     cookbook.recipes.forEach(recipe => {
         recipeMenu.createRecipeMenu(recipe)
     })
-    docUtils.showHideElementById(spinner.id)
+    docUtils.hideElement(spinner)
 })
 
