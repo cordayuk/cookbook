@@ -1,10 +1,12 @@
 const Cookbook = require('../function/cookbook.js')
 const recipeMenu = require('./scripts/recipeMenu.js')
 const docUtils = require('./scripts/documentUtils.js')
+const navigation = require('./scripts/navigation.js')
 
 const cookbook = new Cookbook();
 const spinner = document.getElementById('loader')
-const navBar = document.getElementById('nav-bar')
+
+navigation.initialiseNavBar()
 
 cookbook.loadRecipes().then(() => {
     cookbook.recipes.forEach(recipe => {

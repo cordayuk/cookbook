@@ -2,12 +2,12 @@ const recipeMenuId = 'menu-container'
 const recipeInfoId = 'recipe-info-container'
 
 /**
- * Changes the element display to 'block' if it is set to 'none'
+ * Changes the element display to 'flex' if it is set to 'none'
  * @param element - The element you wish to show.
  */
 function showElement(element) {
     if (element.style.display === "none") {
-        element.style.display = "block"
+        element.style.display = "flex"
     }
 }
 

@@ -1,6 +1,10 @@
 const recipeInfo = require('./recipeInfo.js')
 const documentUtils = require('./documentUtils.js')
 
+const menuButton = document.getElementById('menu-icon')
+const backButton = document.getElementById('back-icon')
+const forwardButton = document.getElementById('forward-icon')
+
 let lastViewedRecipe;
 
 /**
@@ -8,9 +12,17 @@ let lastViewedRecipe;
  * @param recipe the recipe to view the information for.
  */
 function navigateToRecipeInformation(recipe) {
+    //Hide menu
     documentUtils.hideElement(documentUtils.getRecipeMenuElement())
+    // update last viewed recipe to current recipe
     lastViewedRecipe = recipe
+    // Build recipe information page elements
     recipeInfo.viewRecipeInfo(recipe)
+    // Display back button to navigate back to the recipe menu.
+    documentUtils.showElement(backButton)
+    // Hide forward button
+    documentUtils.hideElement(forwardButton)
+
 }
 
 /**
@@ -18,8 +30,16 @@ function navigateToRecipeInformation(recipe) {
  * present and make the menu visible.
  */
 function returnToRecipeMenu() {
+    // Remove recipe information elements
     documentUtils.getRecipeInfoElement().remove()
+    // Reveal recipe menu.
     documentUtils.showElement(documentUtils.getRecipeMenuElement())
+    // Display forward button if last recipe viewed is set.
+    if (lastViewedRecipe) {
+        documentUtils.showElement(forwardButton)
+    }
+
+
 }
 
 /**
@@ -29,14 +49,34 @@ function returnToRecipeMenu() {
 function returnToLastViewedRecipe() {
     documentUtils.hideElement(documentUtils.getRecipeMenuElement())
     recipeInfo.viewRecipeInfo(lastViewedRecipe)
+    documentUtils.hideElement(forwardButton)
 }
 
-function initialiseNavigationBar() {
+/**
+ * Initialises the navigation bar. Sets event listeners and hide appropriate icons.
+ */
+function initialiseNavBar() {
+    // set event listeners for buttons.
+    menuButton.addEventListener('click', () => {
+        console.log('Load menu')
+    })
 
+    backButton.addEventListener('click', () => {
+        returnToRecipeMenu()
+    })
+
+    forwardButton.addEventListener('click', () => {
+        returnToLastViewedRecipe()
+    })
+
+    // Hide Forward and back buttons as on recipe menu
+    documentUtils.hideElement(backButton)
+    documentUtils.hideElement(forwardButton)
 }
 
 module.exports = {
     navigateToRecipeInformation,
     returnToLastViewedRecipe,
-    returnToRecipeMenu
+    returnToRecipeMenu,
+    initialiseNavBar
 }

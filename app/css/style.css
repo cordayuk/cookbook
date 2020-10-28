@@ -33,7 +33,7 @@ li {
 /* Layout containers */
 
 .main-content {
-    width: 70%;
+    width: 85%;
     height: 100%;
     margin: 0 auto;
 }
@@ -42,10 +42,11 @@ li {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-content: center;
     align-items: center;
     height: 100%;
     width: 100%;
-    margin-top: 10%;
+    margin-top: 5%;
     position: relative;
 }
 
@@ -99,8 +100,6 @@ Recipe Information styling
 
 .recipe-image {
     object-fit: cover;
-    height: 400px;
-    width: 400px;
 }
 
 .recipe-info-container {
@@ -108,7 +107,7 @@ Recipe Information styling
     align-items: center;
     height: 100%;
     width: 700px;
-    margin-top: 10%;
+    margin-top: 5%;
     margin-left: auto;
     margin-right: auto;
     position: relative;
@@ -122,8 +121,8 @@ Recipe Information styling
 }
 
 .recipe-upper-left {
-    width: 50%;
-    height: 100%;
+    width: 400px;
+    height: 400px;
 }
 
 .recipe-upper-right {
@@ -172,6 +171,7 @@ Navigation Bar Styling
     position: absolute;
     align-items: center;
     display: flex;
+    width: auto;
 }
 
 #menu-icon {
