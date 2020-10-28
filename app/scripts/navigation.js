@@ -31,6 +31,10 @@ function returnToLastViewedRecipe() {
     recipeInfo.viewRecipeInfo(lastViewedRecipe)
 }
 
+function initialiseNavigationBar() {
+
+}
+
 module.exports = {
     navigateToRecipeInformation,
     returnToLastViewedRecipe,

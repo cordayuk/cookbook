@@ -4,19 +4,23 @@
     <meta charset="UTF-8">
     <title>Cookbook</title>
     <meta content="script-src 'self' 'unsafe-inline';" http-equiv="Content-Security-Policy"/>
-    <link href="./style.css" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="css/all.css" rel="stylesheet">
 </head>
 <body>
-<header class="nav-bar" id="nav-bar">
-    <div class="container">
-        <span id="menu"></span>
-        <span id="nav-back"></span>
-        <span id="nav-forward"></span>
-        <span is="close-app"></span>
-    </div>
-</header>
-
+<div class="icon-bar">
+    <div id="menu-icon"><i class="fas fa-bars"></i></div>
+    <div id="back-icon"><i class="fas fa-angle-left"></i></div>
+    <div id="forward-icon"><i class="fas fa-angle-right"></i></div>
+</div>
 <div class="main-content" id="main-content">
+    <!--    <div class="side-menu" id="side-menu">-->
+    <!--        <a class="closebtn" href="javascript:void(0)">&times;</a>-->
+    <!--        <a href="#">Add Recipe</a>-->
+    <!--        <a href="#">Edit Recipe</a>-->
+    <!--        <a href="#">Delete Recipe</a>-->
+    <!--    </div>-->
+
     <div class="menu-container" id="menu-container">
         <div id="loader"></div>
     </div>
