@@ -4,8 +4,17 @@ const documentUtils = require('./documentUtils.js')
 const menuButton = document.getElementById('menu-icon')
 const backButton = document.getElementById('back-icon')
 const forwardButton = document.getElementById('forward-icon')
+const sideMenuCloseButton = document.getElementById('sideMenuClose')
+
+
+// Page Types
+const menuPageType = "MENU";
+const recipePageType = "RECIPE";
+const addRecipePageType = "RECIPE_ADD"
+const editRecipePageType = "RECIPE_EDIT"
 
 let lastViewedRecipe;
+let currentPageType = "Menu";
 
 /**
  * Navigates to the recipe information page and stores the recipe as the last viewed recipe.
@@ -22,7 +31,8 @@ function navigateToRecipeInformation(recipe) {
     documentUtils.showElement(backButton)
     // Hide forward button
     documentUtils.hideElement(forwardButton)
-
+    // Set Current page to recipe
+    currentPageType = recipePageType
 }
 
 /**
@@ -38,8 +48,8 @@ function returnToRecipeMenu() {
     if (lastViewedRecipe) {
         documentUtils.showElement(forwardButton)
     }
-
-
+    // Set Page Type to Menu
+    currentPageType = menuPageType;
 }
 
 /**
@@ -50,6 +60,7 @@ function returnToLastViewedRecipe() {
     documentUtils.hideElement(documentUtils.getRecipeMenuElement())
     recipeInfo.viewRecipeInfo(lastViewedRecipe)
     documentUtils.hideElement(forwardButton)
+    currentPageType = recipePageType
 }
 
 /**
@@ -58,7 +69,7 @@ function returnToLastViewedRecipe() {
 function initialiseNavBar() {
     // set event listeners for buttons.
     menuButton.addEventListener('click', () => {
-        console.log('Load menu')
+        openSideMenu()
     })
 
     backButton.addEventListener('click', () => {
@@ -69,14 +80,38 @@ function initialiseNavBar() {
         returnToLastViewedRecipe()
     })
 
+    sideMenuCloseButton.addEventListener('click', () => {
+        closeSideMenu()
+    })
+
     // Hide Forward and back buttons as on recipe menu
     documentUtils.hideElement(backButton)
     documentUtils.hideElement(forwardButton)
+}
+
+/**
+ * returns the current viewed page type. For example if the user is on the menu section
+ * then it will return the Menu page type.
+ * @returns {string} the current viewed page type
+ */
+function getCurrentPageType() {
+    return currentPageType;
+}
+
+/* Set the width of the side navigation to 250px */
+function openSideMenu() {
+    document.getElementById("side-menu").style.width = "250px";
+}
+
+/* Set the width of the side navigation to 0 */
+function closeSideMenu() {
+    document.getElementById("side-menu").style.width = "0";
 }
 
 module.exports = {
     navigateToRecipeInformation,
     returnToLastViewedRecipe,
     returnToRecipeMenu,
-    initialiseNavBar
+    initialiseNavBar,
+    getCurrentPageType
 }

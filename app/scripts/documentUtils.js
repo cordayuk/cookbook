@@ -7,7 +7,7 @@ const recipeInfoId = 'recipe-info-container'
  */
 function showElement(element) {
     if (element.style.display === "none") {
-        element.style.display = "flex"
+        element.removeAttribute('style')
     }
 }
 
