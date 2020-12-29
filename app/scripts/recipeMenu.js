@@ -1,15 +1,14 @@
-const recipeInfo = require('./recipeInfo.js')
+const navigation = require('./navigation.js')
 const documentUtils = require('./documentUtils.js')
 
-const menuContainer = document.getElementById("menu-container")
+const menuContainer = documentUtils.getRecipeMenuElement()
 
 function createRecipeMenuItem(recipe) {
     // Creates div to hold recipe image and name. Sets up click event listener to handle loading recipe details.
     let div = document.createElement("div")
     div.className = 'recipe'
     div.addEventListener("click", () => {
-        documentUtils.showHideElementById(menuContainer.id);
-        recipeInfo.viewRecipeInfo(recipe)
+        navigation.navigateToRecipeInformation(recipe)
     }, false)
 
     // Create image of recipe element

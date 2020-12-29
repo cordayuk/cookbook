@@ -1,21 +1,49 @@
-/**
- * Shows or hide element based on whether it is visible or not. If visible element will be hidden. If element is hidden it will displayed.
- * @param id - if of element you want to hide or display.
- */
-function showHideElementById(id) {
-    if (typeof id === 'string') {
-        let element = document.getElementById(id)
+const recipeMenuId = 'menu-container'
+const recipeInfoId = 'recipe-info-container'
 
-        if (element.style.display === "none") {
-            element.style.display = "block"
-        } else {
-            element.style.display = "none"
-        }
-    } else {
-        throw new Error("Id was not a String")
+/**
+ * Changes the element display to 'flex' if it is set to 'none'
+ * @param element - The element you wish to show.
+ */
+function showElement(element) {
+    if (element.style.display === "none") {
+        element.removeAttribute('style')
     }
 }
 
+/**
+ * Changes the element display to 'none' hiding the element.
+ * @param element - the element you wish to hide.
+ */
+function hideElement(element) {
+    if (element.style.display !== "none") {
+        element.style.display = "none"
+    }
+}
+
+/**
+ * Method to retrieve the base element of the recipe menu.
+ * @returns {HTMLElement|null} the base recipe menu element.
+ */
+function getRecipeMenuElement() {
+    let recipeMenu = document.getElementById(recipeMenuId)
+
+    return recipeMenu ? recipeMenu : null
+}
+
+/**
+ * Method to return the ase element of the recipe information.
+ * @returns {HTMLElement|null} The base recipe information element.
+ */
+function getRecipeInfoElement() {
+    let recipeInfo = document.getElementById(recipeInfoId)
+
+    return recipeInfo ? recipeInfo : null
+}
+
 module.exports = {
-    showHideElementById
+    showElement,
+    hideElement,
+    getRecipeInfoElement,
+    getRecipeMenuElement
 }
