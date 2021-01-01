@@ -2,6 +2,8 @@ const navigation = require('./navigation.js')
 const documentUtils = require('./documentUtils.js')
 
 const menuContainer = documentUtils.getRecipeMenuElement()
+const pageNumber = document.getElementById('page-number')
+const pageNumberText = document.getElementById('page-number-text')
 
 let recipes
 let numberOfPages
@@ -12,8 +14,8 @@ function createRecipeMenu(cookbook) {
     recipes = cookbook.recipes
     console.log(cookbook.recipes)
     numberOfPages = Math.ceil((recipes.length / recipesPerPage))
+
     createRecipeMenuPage()
-    console.log(numberOfPages)
 
     if (numberOfPages > 1) {
         let scrollLeft = document.getElementById('scroll-left-button')
@@ -24,13 +26,14 @@ function createRecipeMenu(cookbook) {
 
         scrollLeft.addEventListener('click', gotoPreviousPage)
         scrollRight.addEventListener('click', gotoNextPage)
+
+        pageNumberText.textContent = `Page: ${currentPage} of ${numberOfPages}`
+        documentUtils.showElement(pageNumber)
     }
-
-
 }
 
 function createRecipeMenuPage() {
-    for (let i = (currentPage - 1) * recipesPerPage; i < (currentPage * recipesPerPage); i++) {
+    for (let i = (currentPage - 1) * recipesPerPage; i < (currentPage * recipesPerPage) && i < recipes.length; i++) {
         createRecipeMenuItem(recipes[i])
     }
 }
@@ -45,12 +48,14 @@ function removeRecipeItemElements() {
 function gotoNextPage() {
     if (currentPage === numberOfPages) {
         currentPage = 1
+        console.log('Wrapping')
     } else {
         currentPage = currentPage + 1
     }
 
     removeRecipeItemElements()
     createRecipeMenuPage()
+    updatePageNumber()
 }
 
 function gotoPreviousPage() {
@@ -62,6 +67,13 @@ function gotoPreviousPage() {
 
     removeRecipeItemElements()
     createRecipeMenuPage()
+    updatePageNumber()
+}
+
+function updatePageNumber() {
+    if (numberOfPages > 1) {
+        pageNumberText.textContent = `Page: ${currentPage} of ${numberOfPages}`
+    }
 }
 
 /**
@@ -95,5 +107,7 @@ function createRecipeMenuItem(recipe) {
 }
 
 module.exports = {
-    createRecipeMenu
+    createRecipeMenu,
+    currentPage,
+    numberOfPages
 }
