@@ -1,4 +1,4 @@
-const contentContainer = document.getElementById('main-content')
+const contentContainer = document.getElementById('centre-content')
 
 /**
  * Creates and adds the recipe information elements to the main content.
@@ -16,6 +16,8 @@ function viewRecipeInfo(recipe) {
     recipeContainer.append(upperContainer, lowerContainer)
 
     contentContainer.appendChild(recipeContainer)
+
+    window.scrollTo(0, 0)
 }
 
 /**

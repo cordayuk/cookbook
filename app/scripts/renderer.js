@@ -6,13 +6,12 @@ const navigation = require('./scripts/navigation.js')
 const cookbook = new Cookbook();
 const spinner = document.getElementById('loader')
 
-navigation.initialiseNavBar()
-
 cookbook.loadRecipes().then(() => {
-    cookbook.recipes.forEach(recipe => {
-        recipeMenu.createRecipeMenu(recipe)
-    })
+    recipeMenu.createRecipeMenu(cookbook)
     docUtils.hideElement(spinner)
+
+}).then(() => {
+    navigation.initialiseNavBar()
 })
 
 

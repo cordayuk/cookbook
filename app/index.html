@@ -8,10 +8,11 @@
     <link href="css/all.css" rel="stylesheet">
 </head>
 <body>
-<div class="icon-bar">
+<div class="icon-bar" id="icon-bar">
     <div id="menu-icon"><i class="fas fa-bars"></i></div>
     <div id="back-icon"><i class="fas fa-angle-left"></i></div>
     <div id="forward-icon"><i class="fas fa-angle-right"></i></div>
+    <div id="page-number" style="display: none"><span id="page-number-text"></span></div>
     <!--    <div id="close-icon" onClick="window.close();"><i class="fas fa-times"></i></div>-->
 </div>
 <div class="main-content" id="main-content">
@@ -21,9 +22,20 @@
         <a href="#">Edit Recipe</a>
         <a href="#">Delete Recipe</a>
     </div>
-
-    <div class="menu-container" id="menu-container">
-        <div id="loader"></div>
+    <div class="centre-content" id="centre-content">
+        <div class="scroll" id="scroll-left">
+            <div class="menu-scroll-button" id="scroll-left-button" style="display: none">
+                <i class="fas fa-angle-left"></i>
+            </div>
+        </div>
+        <div class="menu-container" id="menu-container">
+            <div id="loader"></div>
+        </div>
+        <div class="scroll" id="scroll-right">
+            <div class="menu-scroll-button" id="scroll-right-button" style="display: none">
+                <i class="fas fa-angle-right"></i>
+            </div>
+        </div>
     </div>
 </div>
 

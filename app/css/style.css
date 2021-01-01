@@ -3,6 +3,9 @@
    =============================== */
 * {
     box-sizing: border-box;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
 }
 
 html {
@@ -15,6 +18,7 @@ body {
     background-color: lightsteelblue;
     margin: 0;
     overflow: auto;
+    height: 100%;
 }
 
 h1 {
@@ -33,7 +37,7 @@ li {
 /* Layout containers */
 
 .main-content {
-    width: 85%;
+    width: 90%;
     height: 100%;
     margin: 0 auto;
 }
@@ -46,18 +50,43 @@ li {
     align-items: center;
     height: 100%;
     width: 100%;
-    margin-top: 55px;
+    margin-top: 40px;
     position: relative;
 }
 
 .recipe {
-    height: 300px;
-    width: 275px;
+    height: 200px;
+    width: 175px;
     border: 2px solid black;
     border-radius: 5%;
     background-color: white;
     margin: 2%;
     overflow: hidden;
+}
+
+.centre-content {
+    display: inline-flex;
+    width: 100%;
+    height: 100%;
+}
+
+.scroll {
+    display: inline-flex;
+    min-height: 100%;
+    width: 5%;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+
+#scroll-left-button, #scroll-right-button {
+    font-size: 200px;
+    display: flex
+}
+
+#scroll-left-button:hover, #scroll-right-button:hover {
+    color: white;
 }
 
 .recipeLabelMenu {
@@ -213,6 +242,23 @@ Navigation Bar Styling
     text-align: center;
     display: inline-flex;
     float: right;
+}
+
+#page-number {
+    display: inline-flex;
+    align-content: center;
+    text-align: center;
+    justify-content: center;
+    min-width: 100%;
+}
+
+#page-number-text {
+    display: block;
+    text-align: center;
+    font-size: 16px;
+    font-family: sans-serif;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 /********************
