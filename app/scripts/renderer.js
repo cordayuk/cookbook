@@ -9,9 +9,7 @@ const spinner = document.getElementById('loader')
 navigation.initialiseNavBar()
 
 cookbook.loadRecipes().then(() => {
-    cookbook.recipes.forEach(recipe => {
-        recipeMenu.createRecipeMenu(recipe)
-    })
+    recipeMenu.createRecipeMenu(cookbook)
     docUtils.hideElement(spinner)
 })
 

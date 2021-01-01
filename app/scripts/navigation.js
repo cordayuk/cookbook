@@ -5,7 +5,8 @@ const menuButton = document.getElementById('menu-icon')
 const backButton = document.getElementById('back-icon')
 const forwardButton = document.getElementById('forward-icon')
 const sideMenuCloseButton = document.getElementById('sideMenuClose')
-
+const scrollLeftButton = document.getElementById('scroll-left')
+const scrollRightButton = document.getElementById('scroll-right')
 
 // Page Types
 const menuPageType = "MENU";
@@ -23,6 +24,7 @@ let currentPageType = "Menu";
 function navigateToRecipeInformation(recipe) {
     //Hide menu
     documentUtils.hideElement(documentUtils.getRecipeMenuElement())
+    hideScrollButtons()
     // update last viewed recipe to current recipe
     lastViewedRecipe = recipe
     // Build recipe information page elements
@@ -44,6 +46,7 @@ function returnToRecipeMenu() {
     documentUtils.getRecipeInfoElement().remove()
     // Reveal recipe menu.
     documentUtils.showElement(documentUtils.getRecipeMenuElement())
+    showScrollButtons()
     // Display forward button if last recipe viewed is set.
     if (lastViewedRecipe) {
         documentUtils.showElement(forwardButton)
@@ -60,6 +63,7 @@ function returnToLastViewedRecipe() {
     documentUtils.hideElement(documentUtils.getRecipeMenuElement())
     recipeInfo.viewRecipeInfo(lastViewedRecipe)
     documentUtils.hideElement(forwardButton)
+    hideScrollButtons()
     currentPageType = recipePageType
 }
 
@@ -108,10 +112,22 @@ function closeSideMenu() {
     document.getElementById("side-menu").style.width = "0";
 }
 
+function showScrollButtons() {
+    documentUtils.showElement(scrollLeftButton)
+    documentUtils.showElement(scrollRightButton)
+}
+
+function hideScrollButtons() {
+    documentUtils.hideElement(scrollRightButton)
+    documentUtils.hideElement(scrollLeftButton)
+}
+
 module.exports = {
     navigateToRecipeInformation,
     returnToLastViewedRecipe,
     returnToRecipeMenu,
     initialiseNavBar,
-    getCurrentPageType
+    getCurrentPageType,
+    showScrollButtons,
+    hideScrollButtons
 }
